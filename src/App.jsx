@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { initialProducts, formatRupiah } from './data/initialProducts';
+import { initialProducts } from './data/initialProducts';
+import ProductCard from './components/ProductCard';
 import './App.css';
 
 function App() {
@@ -9,6 +10,14 @@ function App() {
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleEditClick = (product) => {
+    alert(`Edit produk: ${product.name}`);
+  };
+
+  const handleDeleteClick = (product) => {
+    alert(`Hapus produk: ${product.name}`);
+  };
 
   return (
     <div className="container">
@@ -35,11 +44,12 @@ function App() {
 
       <main className="product-grid">
         {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card">
-            <span className="product-id">ID: {product.id}</span>
-            <h2 className="product-name">{product.name}</h2>
-            <p className="product-price">{formatRupiah(product.price)}</p>
-          </div>
+          <ProductCard
+            key={product.id}
+            product={product}
+            onEdit={() => handleEditClick(product)}
+            onDelete={() => handleDeleteClick(product)}
+          />
         ))}
       </main>
 
