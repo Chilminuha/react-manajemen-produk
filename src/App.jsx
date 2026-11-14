@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { initialProducts } from './data/initialProducts';
 import ProductCard from './components/ProductCard';
 import ProductFormModal from './components/ProductFormModal';
+import DeleteConfirmModal from './components/DeleteConfirmModal';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [deletingProduct, setDeletingProduct] = useState(null);
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,8 +44,12 @@ function App() {
     handleCloseForm();
   };
 
-  const handleDeleteClick = (product) => {
-    alert(`Hapus produk: ${product.name}`);
+  const handleConfirmDelete = () => {
+    if (!deletingProduct) return;
+    setProducts((prev) =>
+      prev.filter((item) => item.id !== deletingProduct.id)
+    );
+    setDeletingProduct(null);
   };
 
   return (
@@ -75,7 +81,7 @@ function App() {
             key={product.id}
             product={product}
             onEdit={() => handleOpenEdit(product)}
-            onDelete={() => handleDeleteClick(product)}
+            onDelete={() => setDeletingProduct(product)}
           />
         ))}
       </main>
@@ -89,6 +95,14 @@ function App() {
           initialData={editingProduct}
           onSave={handleSaveProduct}
           onClose={handleCloseForm}
+        />
+      )}
+
+      {deletingProduct && (
+        <DeleteConfirmModal
+          product={deletingProduct}
+          onConfirm={handleConfirmDelete}
+          onClose={() => setDeletingProduct(null)}
         />
       )}
     </div>
