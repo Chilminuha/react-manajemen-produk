@@ -1,16 +1,31 @@
-# React + Vite
+# Manajemen Produk — Tugas 3 Pemrograman Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi web berbasis React dan Vite untuk mengelola daftar produk dan harga, dibuat sebagai penyelesaian Tugas 3 mata kuliah Pemrograman Web dengan fokus pada penerapan *event handler*, pengelolaan *state*, dan penerusan fungsi *callback* melalui *props*.
 
-Currently, two official plugins are available:
+| Nama | NRP |
+|---|---|
+| Chilmi Muhammad Ulin Nuha | 5027251003 |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fitur Utama
+- **Daftar & Pencarian Produk:** Menampilkan kartu produk (ID, nama, dan harga dalam format Rupiah) serta filter pencarian secara *real-time*.
+- **Tambah Produk:** Menambahkan produk baru melalui modal form dengan validasi nama wajib diisi dan harga lebih dari `0`.
+- **Edit Produk:** Memperbarui nama dan harga produk yang dipilih melalui modal form.
+- **Hapus Produk:** Menghapus produk dari daftar setelah konfirmasi melalui modal pop-up.
 
-## React Compiler
+## Teknologi yang Digunakan
+- React
+- Vite
+- CSS3
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Struktur Folder Utama
+```text
+src/
+├── components/
+│   ├── DeleteConfirmModal.jsx   # Modal konfirmasi hapus produk
+│   ├── ProductCard.jsx          # Kartu item produk dengan prop handler onEdit & onDelete
+│   └── ProductFormModal.jsx     # Modal form untuk tambah dan edit produk
+├── data/
+│   └── initialProducts.js       # Data awal produk dan fungsi formatRupiah
+├── App.css                      # Styling antarmuka dan modal
+└── App.jsx                      # Komponen utama pengelola state dan event handler
+```
