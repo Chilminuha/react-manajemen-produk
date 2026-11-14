@@ -12,7 +12,13 @@ body {
   color: #0f172a;
 }
 
+#root {
+  width: 100%;
+  text-align: left;
+}
+
 .container {
+  width: 100%;
   max-width: 1024px;
   margin: 40px auto;
   padding: 0 20px;
@@ -41,7 +47,7 @@ body {
 
 /* Buttons */
 .btn-primary {
-  background-color: #1d4ed8;
+  background-color: #000080;
   color: #ffffff;
   border: none;
   padding: 10px 18px;
@@ -53,7 +59,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #1e40af;
+  background-color: #00005c;
 }
 
 .btn-secondary {
@@ -107,7 +113,7 @@ body {
 }
 
 .search-input:focus {
-  border-color: #1d4ed8;
+  border-color: #000080;
 }
 
 .product-count {
@@ -147,7 +153,7 @@ body {
 .product-price {
   font-size: 15px;
   font-weight: 700;
-  color: #1d4ed8;
+  color: #000080;
   margin-bottom: 16px;
 }
 
@@ -159,8 +165,8 @@ body {
 
 .btn-edit {
   background-color: #ffffff;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  color: #000080;
+  border: 1px solid #9999cc;
   padding: 7px 12px;
   border-radius: 6px;
   font-size: 13px;
@@ -169,7 +175,7 @@ body {
 }
 
 .btn-edit:hover {
-  background-color: #eff6ff;
+  background-color: #f0f0f8;
 }
 
 .btn-delete {
