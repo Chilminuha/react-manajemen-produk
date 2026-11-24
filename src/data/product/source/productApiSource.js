@@ -1,4 +1,4 @@
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api').replace(/\/$/, '');
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000').replace(/\/$/, '');
 
 async function request(endpoint, options = {}) {
   const response = await fetch(`${BASE_URL}${endpoint}`, {
@@ -29,9 +29,9 @@ export const productApiSource = {
       body: JSON.stringify(payload),
     }),
   update: (id, payload) =>
-    request(`/products/${id}`, {
+    request('/products', {
       method: 'PUT',
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ id: Number(id), ...payload }),
     }),
   remove: (id) =>
     request(`/products/${id}`, {
